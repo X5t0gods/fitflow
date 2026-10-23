@@ -1,0 +1,9 @@
+{
+  "name": "fitflow-personal-gym",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "练序 — 手机优先的个人健身计划与打卡",
+  "engines": { "node": ">=22.9" },
+  "scripts": { "start": "node --env-file-if-exists=.env server.mjs", "dev": "node --watch --env-file-if-exists=.env server.mjs", "test": "node --test test/*.test.mjs", "check": "node --check server.mjs && node --check domain.mjs && node --check public/app.js" }
+}

@@ -1,0 +1,32 @@
+services:
+  fitflow:
+    build: .
+    restart: unless-stopped
+    environment:
+      NODE_ENV: production
+      APP_PASSWORD: ${APP_PASSWORD:?请在 .env 中设置至少 12 位的私人访问密码}
+      ALLOWED_HOSTS: ${DOMAIN:?请在 .env 中设置已解析的域名}
+      COOKIE_SECURE: "true"
+    volumes:
+      - fitflow-data:/app/data
+    expose:
+      - "3210"
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      fitflow:
+        condition: service_healthy
+    environment:
+      DOMAIN: ${DOMAIN:?请设置已解析到云服务器的域名}
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy-data:/data
+      - caddy-config:/config
+volumes:
+  fitflow-data:
+  caddy-data:
+  caddy-config:

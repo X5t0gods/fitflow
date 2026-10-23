@@ -1,0 +1,11 @@
+data/*
+!data/.gitkeep
+.env
+.env.*
+!.env.example
+node_modules/
+*.log
+*.pid
+*.tmp
+coverage/
+.DS_Store
