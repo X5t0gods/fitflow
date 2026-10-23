@@ -9,3 +9,24 @@ node_modules/
 *.tmp
 coverage/
 .DS_Store
+
+# Private data, exported backups, credentials and deployment secrets.
+backups/
+exports/
+state*.json
+fitflow-*.json
+练序备份-*.json
+*.db
+*.sqlite
+*.sqlite3
+*.sqlite-*
+*.pem
+*.key
+*.pfx
+*.p12
+id_rsa*
+id_ed25519*
+credentials*.json
+service-account*.json
+.ssh/
+.aws/
